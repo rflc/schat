@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 41.823 41.823">
+<path fill="none" stroke="#8CC541" stroke-width="1.736" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1.306 40.292l2.099-9.622a19.948 19.948 0 0 1-2.537-9.758C.868 9.842 9.842.868 20.911.868s20.043 8.974 20.043 20.044c0 11.069-8.974 20.043-20.043 20.043-3.72 0-7.2-1.017-10.186-2.781l-9.419 2.118z"/>
+<!--
+<foreignobject x="0" y="0" width="100" height="100">
+<form style="border:1px green solid">
+<input type="text" style="border:1px red solid"/>
+<input type="text"/>
+</form>
+
+<div style="border:1px green solid">I'm a div inside a SVG.</div>
+</foreignobject>
+-->
+</svg>

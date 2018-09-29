@@ -1,0 +1,101 @@
+<!doctype html>
+<head>
+    <!--<script src="chat.js"></script>-->
+</head>
+<body>
+<!--
+    <form id="myform" action="">
+	<input id="m" autocomplete="off" />
+	<button>Send</button>
+	</form>
+-->
+<a id="mybutton">
+<svg xmlns="http://www.w3.org/2000/svg" width="41.823" height="41.823" viewBox="0 0 41.823 41.823"><path fill="none" stroke="#8CC541" stroke-width="1.736" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1.306 40.292l2.099-9.622a19.948 19.948 0 0 1-2.537-9.758C.868 9.842 9.842.868 20.911.868s20.043 8.974 20.043 20.044c0 11.069-8.974 20.043-20.043 20.043-3.72 0-7.2-1.017-10.186-2.781l-9.419 2.118z"/></svg><!--{{{}}}-->
+</a>
+<script>
+
+function chat(){
+
+//e.preventDefault();
+console.log("Chatting..");
+}
+
+function rcv(e){
+    var res = JSON.parse(e.data)
+    
+    switch(res.type){
+    case 'message':
+            console.log(res.text);
+	    break;
+
+    case 'user_typing':
+    
+    case 'hello':
+         console.log(res.type);
+	    break;
+    default:
+	 console.log(res.type);
+    }
+
+}
+
+function ws(url){
+    console.log("Establishing connection..");
+    var server = new WebSocket(url);
+    server.onmessage = rcv;
+    server.onopen = function(){
+    var jsn = {ID:1, type:"message", channel:"CAWKKD63C", text:"Woo it works!" }
+    jsn = JSON.stringify(jsn);
+    server.send(jsn);
+    console.log("Message sent to Slack");
+    }
+
+}
+
+function connect(){
+fetch("https://slack.com/api/rtm.connect?token=xoxp-369969908096-371712851927-371583210645-0e58259ba706b0f25625e60fe88d1ed6", { method: "get"})
+.then(
+      function(response){ 
+	       response.json()
+	       .then(
+		     function(resp){
+		              //var ws = ws(resp.url).then(function(res){
+			      //return resp.url;
+			      ws(resp.url);
+		     });
+		     //function(err){
+		    //alert("error");
+		    //}
+	}, 
+	function(err){
+	alert("Failed to fetch");
+	}
+    );
+	}
+//	});
+//}
+
+
+
+
+function start(){
+const bubble = document.getElementById('mybutton');
+bubble.onclick = function(e){
+connect();
+// Bubble animations go here..
+//function (){
+//}
+}
+}
+start();
+// This may not be necessary
+/*
+form.onkeydown = function(e){
+e.pr
+//connect();
+alert("key press");
+}
+}
+*/
+</script>
+</body>
